@@ -1,0 +1,119 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Payment
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content scroll="false" class="fill-height">
+  <div class="leftScreen">
+    <ion-card>
+      <ion-card-content>
+        <ion-label  class="inputValue" text-righ text-startt>${{orderCost}}</ion-label>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+      <ion-label  class="inputValue" text-righ text-startt>${{joinInputArray()}}</ion-label>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="confirmState == true">
+      <ion-card-content>
+        <ion-label  class="inputValue" text-righ text-startt>Change ${{changeValue}}</ion-label>
+      </ion-card-content>
+    </ion-card>
+    <button style="width:240px; margin-left:32%" ion-button block *ngIf="confirmState == true" (click)="dismiss()"> Done </button>
+
+  </div>
+  <div class="rightScreen">
+  <div class="row row-center">
+    <div class="col">
+      <button ion-button class="button" (click)="numberInput('7')">
+        7
+      </button>
+    </div>
+    <div class="col">
+      <button ion-button class="button" (click)="numberInput('8')">
+        8
+      </button>
+    </div>
+    <div class="col">
+      <button ion-button class="button" (click)="numberInput('9')">
+        9
+      </button>
+    </div>
+    <div class="col">
+      <button ion-button class="button" (click)="numberInput('back')">
+        <ion-icon name="backspace"></ion-icon>
+      </button>
+    </div>
+  </div>
+  <div class="row row-center">
+    <div class="col">
+      <button ion-button class="button" (click)="numberInput('4')">
+        4
+      </button>
+    </div>
+    <div class="col">
+      <button ion-button class="button" (click)="numberInput('5')">
+        5
+      </button>
+    </div>
+    <div class="col">
+      <button ion-button class="button" (click)="numberInput('6')">
+        6
+      </button>
+    </div>
+    <div class="col">
+      <button ion-button style="background-color: red" class="button" (click)="inCompleteDismiss()">
+        Cancel
+      </button>
+    </div>
+  </div>
+  <div class="row row-center">
+    <div class="col">
+      <button ion-button class="button" (click)="numberInput('1')">
+        1
+      </button>
+    </div>
+    <div class="col">
+      <button ion-button class="button" (click)="numberInput('2')">
+        2
+      </button>
+    </div>
+    <div class="col">
+      <button ion-button class="button" (click)="numberInput('3')">
+        3
+      </button>
+    </div>
+    <div class="col">
+      <button ion-button style="background-color: dimgray" class="button" (click)="numberInput('clear')">
+        Clear
+      </button>
+    </div>
+  </div>
+  <div class="row row-center">
+    <div class="col">
+      <button ion-button class="button" (click)="numberInput('0')">
+        0
+      </button>
+    </div>
+    <div class="col">
+      <button ion-button class="button" (click)="numberInput('00')">
+        00
+      </button>
+    </div>
+    <div class="col">
+      <button ion-button  class="button">
+
+      </button>
+    </div>
+    <div class="col">
+      <button ion-button style="background-color: greenyellow" class="button" (click)="numberInput('confirm')">
+        Confirm
+      </button>
+    </div>
+  </div>
+  </div>
+</ion-content>

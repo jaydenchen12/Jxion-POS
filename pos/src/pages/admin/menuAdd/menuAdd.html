@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Menu Add
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="form1">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label>Menu Item Category:</ion-label>
+        <ion-select [(ngModel)]="submit.categoryID">
+          <ion-option *ngFor="let menuItem of category" [value]="menuItem.categoryID">{{menuItem.categoryTitleEn}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>English Name:</ion-label>
+        <ion-input type="text" [(ngModel)]="submit.enItemTitle"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Chinese Name:</ion-label>
+        <ion-input type="text" [(ngModel)]="submit.chItemTitle"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Default Sauce:</ion-label>
+        <ion-select [(ngModel)]="submit.defaultSauID">
+          <ion-option *ngFor="let sauce of sauces" [value]="sauce.sauceItemID">{{sauce.sauceItemTitleEn}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Price Small:</ion-label>
+        <ion-input type="number" [(ngModel)]="submit.PriceSm" placeholder="Leave Blank if It's One Size"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Price Large:</ion-label>
+        <ion-input type="number" [(ngModel)]="submit.PriceLg"></ion-input>
+      </ion-item>
+      <button ion-button (click)="submitItem()" block>Add Menu Item</button>
+    </ion-list>
+  </div>
+</ion-content>
+

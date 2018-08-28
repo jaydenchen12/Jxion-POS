@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Packer
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="right">
+    <ion-scroll scrollY="true" style="height: 90vh">
+    <ion-card *ngFor="let pickup of orderPickUp">
+      <ion-card-header class="pickUpClass">
+        Name: {{pickup.customerName}} Order ID: {{pickup.orderID}}
+      </ion-card-header>
+      <div style="float: left; width: 50%">
+        <ion-list no-lines>
+          <ion-item style="padding-bottom:0; padding-top:0; margin-bottom:0;" *ngFor="let pickupItems of pickup.orderDetail">
+            <b>{{pickupItems[0].quantityValue}}x </b>
+            <b *ngIf="!isChinese">{{pickupItems[0].sizeAbre}}</b>
+            <b>{{!isChinese ? pickupItems[0].enMenuItemTitle : pickupItems[0].chMenuItemTitle}}</b>
+            <b *ngIf="isChinese">{{pickupItems[0].chSizeTitle}}</b>
+            <ion-list no-lines style="padding-bottom:-10%; margin-bottom:0">
+              <ion-item *ngIf="pickupItems[0].sauceID != null">
+                {{!isChinese ? pickupItems[0].enSauceTitle : pickupItems[0].chSauceTitle}}
+              </ion-item>
+              <ion-item style="padding-bottom:0; margin-bottom:0" *ngFor="let addonItem of pickupItems[1]">
+                {{!isChinese ? addonItem.enActionTitle : addonItem.chActionTitle}} {{!isChinese ? addonItem.enIngredientItemTitle : addonItem.chIngredientItemTitle}}
+                <b style="float: right">{{addonItem.addonCost}}</b>
+              </ion-item>
+            </ion-list>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div style="float: left; width: 50%">
+        <ng-container *ngFor="let item of pickup.incompleteItems">
+          <button ion-button (click)="removeItem(item)">
+              {{item.orderItemListDetails[0].quantityValue}}x <ion-label *ngIf="!isChinese"> {{item.orderItemListDetails[0].sizeAbre}}</ion-label>
+              {{!isChinese ? item.orderItemListDetails[0].enMenuItemTitle : item.orderItemListDetails[0].chMenuItemTitle}}
+              <ion-label *ngIf="isChinese">{{item.orderItemListDetails[0].chSizeTitle}}</ion-label>
+          </button>
+          <ion-item *ngIf="item.orderItemListDetails[0].sauceID != null">
+            <a>
+              {{!isChinese ? item.orderItemListDetails[0].enSauceTitle : item.orderItemListDetails[0].chSauceTitle}}
+            </a>
+          </ion-item>
+          <ion-item *ngFor="let addonItem of item.orderItemListDetails[1]">
+            <a>
+              {{!isChinese ? addonItem.enActionTitle : addonItem.chActionTitle}}
+              {{!isChinese ? addonItem.enIngredientItemTitle : addonItem.chIngredientItemTitle}}
+            </a>
+            <a style="float: right">{{addonItem.addonCost}}</a>
+          </ion-item>
+        </ng-container>
+      </div>
+    </ion-card>
+  </ion-scroll>
+  </div>
+  <div class="right">
+        <ion-scroll scrollY="true" style="height: 90vh">
+    <ion-card *ngFor="let walkin of orderWalkin">
+    <ion-card-header class="walkInClass">
+      Name: {{walkin.customerName}} Order ID: {{walkin.orderID}}
+    </ion-card-header>
+    <div style="float: left; width: 50%">
+      <ion-list no-lines>
+        <ion-item style="padding-bottom:0; padding-top:0; margin-bottom:0;" *ngFor="let walkinItems of walkin.orderDetail">
+          <b>{{walkinItems[0].quantityValue}}x </b>
+          <b *ngIf="!isChinese">{{walkinItems[0].sizeAbre}}</b>
+          <b>{{!isChinese ? walkinItems[0].enMenuItemTitle : walkinItems[0].chMenuItemTitle}}</b>
+          <b *ngIf="isChinese">{{walkinItems[0].chSizeTitle}}</b>
+          <ion-list no-lines style="padding-bottom:-10%; margin-bottom:0">
+            <ion-item *ngIf="walkinItems[0].sauceID != null">
+              {{!isChinese ? walkinItems[0].enSauceTitle : walkinItems[0].chSauceTitle}}
+            </ion-item>
+            <ion-item style="padding-bottom:0; margin-bottom:0" *ngFor="let addonItem of walkinItems[1]">
+              {{!isChinese ? addonItem.enActionTitle : addonItem.chActionTitle}} {{!isChinese ? addonItem.enIngredientItemTitle : addonItem.chIngredientItemTitle}}
+              <b style="float: right">{{addonItem.addonCost}}</b>
+            </ion-item>
+          </ion-list>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div style="float: left; width: 50%">
+      <ng-container *ngFor="let item of walkin.incompleteItems">
+        <button ion-button (click)="removeItem(item)">
+          {{item.orderItemListDetails[0].quantityValue}}x <ion-label *ngIf="!isChinese"> {{item.orderItemListDetails[0].sizeAbre}}</ion-label>
+          {{!isChinese ? item.orderItemListDetails[0].enMenuItemTitle : item.orderItemListDetails[0].chMenuItemTitle}}
+          <ion-label *ngIf="isChinese">{{item.orderItemListDetails[0].chSizeTitle}}</ion-label>
+      </button>
+        <ion-item *ngIf="item.orderItemListDetails[0].sauceID != null">
+          <a>
+          {{!isChinese ? item.orderItemListDetails[0].enSauceTitle : item.orderItemListDetails[0].chSauceTitle}}
+        </a>
+        </ion-item>
+        <ion-item *ngFor="let addonItem of item.orderItemListDetails[1]">
+          <a>
+          {{!isChinese ? addonItem.enActionTitle : addonItem.chActionTitle}}
+          {{!isChinese ? addonItem.enIngredientItemTitle : addonItem.chIngredientItemTitle}}
+        </a>
+          <a style="float: right">{{addonItem.addonCost}}</a>
+        </ion-item>
+      </ng-container>
+    </div>
+    </ion-card>
+  </ion-scroll>
+  </div>
+</ion-content>

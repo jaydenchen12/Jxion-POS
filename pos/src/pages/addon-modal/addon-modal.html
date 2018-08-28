@@ -1,0 +1,130 @@
+<!--
+  Generated template for the AddonModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{!isChinese ? itemSel.enMenuItemTitle : itemSel.chMenuItemTitle}}
+      <!-- <button ion-button icon-only (click)="presentInfo()" > -->
+        <ion-icon name="ios-alert-outline" style="color: #488aff" (click)="presentInfo()"></ion-icon>
+      <!-- </button> -->
+    </ion-title>
+    <button ion-button style="float: right" (click)="openSpecial()"> {{!isChinese ? "+ Special Request" : " + 特别要求"}}
+   </button>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="red">Cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div style="height: 100vh">
+    <div class="leftSide">
+      <div style="margin-right: 100%;" class="flex_row">
+        <button ion-button (click)="decrement()" style="background-color: #0fb2fc">
+          <ion-icon name="remove-circle"></ion-icon>
+        </button>
+        <p style="font-size: 200%; padding-top: 10px; margin: 5% 8% 2% 8%;">{{currentQuantityNumber}}</p>
+        <button ion-button (click)="increment()" style="background-color: #0fb2fc">
+          <ion-icon name="add-circle"></ion-icon>
+        </button>
+      </div>
+      <ion-scroll scrollY="true" style="height: 80vh">
+      <ion-list>
+        <button ion-button text-wrap no-lines class="sizeButton" *ngFor="let size of importSizes"
+                [ngClass]="{selectClass: size.sizeID == sizeSelect[0], selectClassSpecial: isSpecial}"
+                (click)="sizeSelected(size)">
+          {{!isChinese ? size.enSizeTitle : size.chSizeTitle}} {{size.sizeValue.toFixed(2)}}
+        </button>
+      </ion-list>
+      </ion-scroll>
+    </div>
+    <div class="leftSide2">
+      <h4 align="center">{{!isChinese ? "Sauce" : "酱汁"}}</h4>
+      <ion-scroll scrollY="true" style="height: 45vh">
+        <ion-list insect>
+          <ng-container *ngFor="let sauce of sauces">
+            <button *ngIf="sauce.sauceID != 0" ion-button class="radioButton"
+                    [ngClass]="{selectClass: sauce.sauceID == sauceSelect[0]}"
+                    (click)="sauceSelected(sauce)">
+              {{!isChinese ? sauce.enSauceTitle : sauce.chSauceTitle}}
+            </button>
+          </ng-container>
+        </ion-list>
+      </ion-scroll>
+    </div>
+    <div class="middle">
+      <h4 align="center">{{!isChinese ? "Action" : "要求"}}</h4>
+      <ion-scroll scrollY="true" style="height: 60vh">
+      <ion-list insect>
+        <ng-container *ngFor="let action of actions">
+          <button ion-button class="radioButton" [ngClass]="{selectClass: action.actionID == actionSelect[0]}"
+                  (click)="actionSelected(action)">
+            {{!isChinese ? action.enActionTitle : action.chActionTitle }}
+          </button>
+        </ng-container>
+      </ion-list>
+      </ion-scroll>
+    </div>
+    <div class="rightSide2">
+      <h4 align="center">{{!isChinese ? "Categories" : "类别"}}</h4>
+      <ion-scroll scrollY="true" style="height: 45vh">
+        <ion-list insect>
+          <button ion-button class="radioButton2" *ngFor="let cate of ingredientCategory"
+                  [ngClass]="{selectClass: cate.ingredientCateId == cateSelectID}"
+                  (click)="categorySelected(cate)">
+            {{!isChinese ? cate.ingredientCateTitleEn : cate.ingredientCateTitleCh}}
+          </button>
+        </ion-list>
+      </ion-scroll>
+    </div>
+    <div class="rightSide">
+      <div style="height: 40vh">
+        <ion-scroll scrollY="true" style="height: 40vh">
+          <ion-list>
+            <button ion-button *ngFor="let cateItem of categorySelect" class="sizeButton2"
+                    [ngClass]="{selectClass: cateItem.ingredientItemId == ingredientCategorySelect[0], sizeButton2Ch: isChinese}"
+                    (click)="ingredientSelected(cateItem)">
+              {{!isChinese ? cateItem.enIngredientItemTitle : cateItem.chIngredientItemTitle}}
+            </button>
+          </ion-list>
+        </ion-scroll>
+      </div>
+      <ion-row style="float: right; margin-left: 5%">
+        <button ion-button no-lines class="costButton" *ngFor="let cost of addonCosts"
+                [ngClass]="{selectClass: cost.costID == costSelect && costInput == 0, noCostClass: cost.costID == 1}"
+                (click)="costSelected(cost)">
+          {{cost.costTitle}}
+        </button>
+        <button ion-button class="inputCostButton" (click)="addOnPopover()"
+                [ngClass]="{selectClass: isCustomCost && costInput > 0}">
+          <ion-label>${{costInput}}</ion-label>
+        </button>
+      </ion-row>
+      <button class="addRequest" ion-button round (click)=addRequest()>
+        {{!isChinese ? "Add Request" : "加要求"}}
+      </button>
+      <button class="addItem" ion-button full round (click)=addItem()>
+        {{!isChinese ? "Add Item" : "加餐"}}
+      </button>
+      <ion-scroll class="addonShow" padding-right="0px" scrollY="true">
+        <ion-list inset>
+          <ion-item-sliding [class.deleted] *ngFor="let addon of addOnCart">
+            <ion-item>
+              <small>{{!isChinese ? addon.enActionTitle : addon.chActionTitle}} {{!isChinese ? addon.enIngredientItemTitle : addon.chIngredientItemTitle}}</small>
+              <small style="padding-left: 10%">{{addon.addonCost}}</small>
+            </ion-item>
+            <ion-item-options>
+              <button ion-button (click)="removeItem(addon)" style="background-color: red">{{!isChinese ? "Delete" : "删除"}}</button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-scroll>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,114 @@
+page-addon-modal {
+  ion-content .scroll-content{
+    overflow-y: hidden;
+  }
+  .leftSide{
+    width: 25%;
+    float: left;
+  }
+  .sizeButton2 {
+    white-space: normal;
+    display:inline-block;
+    min-width: 50px;
+    width: 27%;
+    padding:40px 40px 40px 40px;
+    background-color: #0fb2fc;
+  }
+  .sizeButton2Ch {
+    white-space: nowrap;
+  }
+  .sizeButton{
+    display:inline-block;
+    width: 70%;
+    height: 25%;
+    padding: 40px 20px 40px;
+    margin-top: 10%;
+    margin-left: 13%;
+    font-size: 110%;
+    background-color: #0fb2fc;
+  }
+  .selectClassSpecial{
+    display:inline-block;
+    width: 70%;
+    height: 25%;
+    padding: 6% 20px 6%;
+    margin-top: 2%;
+    margin-left: 13%;
+    font-size: 110%;
+    background-color: #0fb2fc;
+  }
+  .radioButton{
+    width: 100%;
+    align-content: center;
+  }
+  .radioButton2{
+    width: 100%;
+    align-content: center;
+    background-color: #696969
+  }
+  .costButton{
+    width: 50px;
+    height: 25px;
+    background-color: #0fb2fc;
+    padding: 0 0 0 5px;
+  }
+  .noCostClass {
+    width: 90px;
+  }
+  .inputCostButton{
+    width: 90px;
+    height: 25px;
+    background-color: #0fb2fc;
+    padding: 0 0 0 5px;
+  }
+  .flex_row {
+    margin-top: 5%;
+    margin-left: 28%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+  }
+  .selectClass{
+    background-color: lightskyblue;
+  }
+  .leftSide2{
+    width: 15%;
+    height: 60vh;
+    float: left;
+    margin-right: 0%;
+  }
+  .middle{
+    width: 10%;
+    height: 60vh;
+    float: left;
+  }
+  .rightSide2{
+    width: 15%;
+    height: 60vh;
+    float: left;
+    //margin-left: 3%;
+  }
+  .rightSide{
+    width: 35%;
+    float: left;
+  }
+  .addRequest{
+    width: 50%;
+    height: 50px;
+    float: right;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #0fb2fc;
+  }
+  .addonShow{
+    height: 20vh;
+    right: 110%;
+    margin-top: 20% ;
+  }
+  .addItem{
+    height: 80px;
+    background-color: greenyellow;
+    float: right;
+  }
+}

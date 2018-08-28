@@ -1,0 +1,19 @@
+page-packer {
+  ion-content .scroll-content{
+    overflow-y: hidden;
+  }
+  .right {
+    width: 48%;
+    float: left;
+  }
+  .pickUpClass {
+    background-color: #87CEFA;
+    position: relative;
+
+  }
+  .walkInClass {
+    background-color: #FF7F50;
+    position: relative;
+
+  }
+}

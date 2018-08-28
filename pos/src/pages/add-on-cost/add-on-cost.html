@@ -1,0 +1,97 @@
+<div class="top">
+  <ion-card>
+    <ion-card-content>
+      <ion-label  class="inputValue" text-righ text-startt>${{joinInputArray()}}</ion-label>
+    </ion-card-content>
+  </ion-card>
+</div>
+<div class="bottom">
+<div class="row row-center">
+  <div class="col">
+    <button ion-button class="button" (click)="numberInput('7')">
+      7
+    </button>
+  </div>
+  <div class="col">
+    <button ion-button class="button" (click)="numberInput('8')">
+      8
+    </button>
+  </div>
+  <div class="col">
+    <button ion-button class="button" (click)="numberInput('9')">
+      9
+    </button>
+  </div>
+  <div class="col">
+    <button ion-button class="button" (click)="numberInput('back')">
+      <ion-icon name="backspace"></ion-icon>
+    </button>
+  </div>
+</div>
+<div class="row row-center">
+  <div class="col">
+    <button ion-button class="button" (click)="numberInput('4')">
+      4
+    </button>
+  </div>
+  <div class="col">
+    <button ion-button class="button" (click)="numberInput('5')">
+      5
+    </button>
+  </div>
+  <div class="col">
+    <button ion-button class="button" (click)="numberInput('6')">
+      6
+    </button>
+  </div>
+  <div class="col">
+    <button ion-button style="background-color: red" class="button">
+      Cancel
+    </button>
+  </div>
+</div>
+<div class="row row-center">
+  <div class="col">
+    <button ion-button class="button" (click)="numberInput('1')">
+      1
+    </button>
+  </div>
+  <div class="col">
+    <button ion-button class="button" (click)="numberInput('2')">
+      2
+    </button>
+  </div>
+  <div class="col">
+    <button ion-button class="button" (click)="numberInput('3')">
+      3
+    </button>
+  </div>
+  <div class="col">
+    <button ion-button style="background-color: dimgray" class="button" (click)="numberInput('clear')">
+      Clear
+    </button>
+  </div>
+</div>
+<div class="row row-center">
+  <div class="col">
+    <button ion-button class="button" (click)="numberInput('0')">
+      0
+    </button>
+  </div>
+  <div class="col">
+    <button ion-button class="button" (click)="numberInput('00')">
+      00
+    </button>
+  </div>
+  <div class="col">
+    <button ion-button class="button">
+
+    </button>
+  </div>
+  <div class="col">
+    <button ion-button style="background-color: greenyellow" class="button" (click)="numberInput('confirm')">
+      Confirm
+    </button>
+  </div>
+</div>
+</div>

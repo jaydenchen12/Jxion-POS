@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ingredient Add
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="form3">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label>Ingredient Category:</ion-label>
+        <ion-select [(ngModel)]="submit.ingredientItemCategoryID">
+          <ion-option *ngFor="let ingredientItem of ingredientCategory" [value]="ingredientItem.ingredientCategoryID">{{ingredientItem.ingredientCategoryTitleEn}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ingredient English Name:</ion-label>
+        <ion-input type="text" [(ngModel)]="submit.ingredientItemTitleEn"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ingredient Chinese Name:</ion-label>
+        <ion-input type="text" [(ngModel)]="submit.ingredientItemTitleCh"></ion-input>
+      </ion-item>
+      <button ion-button (click)="submitItem()" block>Add Ingredient</button>
+    </ion-list>
+  </div>
+</ion-content>

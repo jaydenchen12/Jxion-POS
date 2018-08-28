@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9e760eec-470b-43ad-8023-01eb74e802ae" name="ckpos" url="http://13.90.200.43">
+        <fileTransfer host="13.90.200.43" port="22" rootFolder="/home/hongjiechen96" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="b83feaec-3f37-4990-9b97-7dfb08eb5702" name="aws ion" url="http://ec2-34-212-241-179.us-west-2.compute.amazonaws.com">
+        <fileTransfer host="ec2-34-212-241-179.us-west-2.compute.amazonaws.com" port="22" privateKey="C:\Users\Hongjie\Desktop\Ion2\AWSIONIC.pem" rootFolder="/home/ubuntu" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

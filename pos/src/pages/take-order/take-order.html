@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{custInfo[0]}} For: {{custInfo[1]}}</ion-title>
+    <button ion-button style="float: right" (click)="openSpecial()"> {{!isChinese ? "+ Special Item" : " + 特别餐"}}
+   </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div style="width: 100%">
+    <div class="leftSide">
+      <h2 align="center">Categories</h2>
+      <ion-scroll scrollY="true" style="height: 80vh">
+        <ion-list insect>
+          <button ion-button class="radioButton" *ngFor="let cate of menuCategory" (click)="categorySelected(cate)"
+                  [ngClass]="{selectClass: cate.cateID == selectedId}">
+            {{!isChinese ? cate.enCateTitle : cate.chCateTitle}}
+          </button>
+        </ion-list>
+      </ion-scroll>
+    </div>
+    <div class="menuItems">
+      <ion-scroll padding-right="0px" scrollY="true" style="height: 95vh">
+        <button ion-button *ngFor="let item2 of selected" class="itemButton" (click)="openModal(item2)"
+                [ngClass]="{itemButtonCh: isChinese}">
+          {{!isChinese ? item2.enMenuItemTitle : item2.chMenuItemTitle}}
+        </button>
+      </ion-scroll>
+    </div>
+    <div class="rightSide">
+      <ion-scroll padding-right="0px" scrollY="true" style="height: 65vh">
+        <ion-list inset>
+          <ion-item-sliding [class.deleted] *ngFor="let packageItem of orderCart">
+            <ion-item text-wrap style="padding-bottom:0; margin-bottom:0">
+              <b>{{packageItem[0].quantityValue}}x </b>
+              <b *ngIf="!isChinese">{{packageItem[0].sizeAbre}}</b>
+              <b>{{!isChinese ? packageItem[0].enMenuItemTitle : packageItem[0].chMenuItemTitle}}</b>
+              <b *ngIf="isChinese">{{packageItem[0].chSizeTitle}}</b>
+              <b style="float: right; padding-right: 2%">{{packageItem[0].sizeValue.toFixed(2)}}</b>
+              <ion-list [class.listDeleted] no-lines style="padding-bottom:0; margin-bottom:0">
+                <ion-item *ngIf="packageItem[0].sauceID != null">
+                  {{!isChinese ? packageItem[0].enSauceTitle : packageItem[0].chSauceTitle}}
+                </ion-item>
+                <ion-item *ngFor="let addonItem of packageItem[1]">
+                  {{!isChinese ? addonItem.enActionTitle : addonItem.chActionTitle}}
+                  {{!isChinese ? addonItem.enIngredientItemTitle : addonItem.chIngredientItemTitle}}
+                  <b style="float: right">{{addonItem.addonCost}}</b>
+                </ion-item>
+              </ion-list>
+            </ion-item>
+            <ion-item-options>
+              <button menu-toggle="left" ion-button (click)="makeFree(packageItem)" color="secondary">{{!isChinese ? "Free" : "免费"}}</button>
+              <button menu-toggle="left" ion-button (click)="removeItem(packageItem)" class="removeButton">{{!isChinese ? "Delete" : "删除"}}</button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-scroll>
+      <div>
+        <h4>Tax:
+          <small style="float: right; padding-right: 65px;">${{getTaxAndTotal()[0]}}</small>
+        </h4>
+        <h4>Total:
+          <b style="font-size: 115%;float: right; padding-right: 65px;">${{getTaxAndTotal()[1]}}</b>
+        </h4>
+      </div>
+      <button ion-button style="margin-left: 7%; width: 80%;" (click)=completeOrder()>
+        {{!isChinese ? "Complete" : "完成"}}
+      </button>
+    </div>
+  </div>
+</ion-content>

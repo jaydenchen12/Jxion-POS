@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Rice View</ion-title>
+    <button style="float: right; margin-right: 3%" ion-button color="secondary" (click)="changeLanguage()">
+      English / 中文
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div style="width: 80%">
+    <ion-scroll padding-right="0px" scrollY="true" style="height: 80vh">
+      <ion-list inset>
+        <ng-container *ngFor="let packageItem of importItems">
+          <ion-item [class.deleted] *ngIf="packageItem.orderItemListDetails[0].pushToRice == 1"
+                    [ngClass]="{editedClass: packageItem.edited == 1}">
+            <b>{{packageItem.orderItemListDetails[0].quantityValue}}x</b>
+            <b *ngIf="!util.isChinese">{{packageItem.orderItemListDetails[0].sizeAbre}}</b>
+            <b style="font-size: 110%">{{!util.isChinese ? packageItem.orderItemListDetails[0].enMenuItemTitle : packageItem.orderItemListDetails[0].chMenuItemTitle }}</b>
+            <b *ngIf="util.isChinese">{{packageItem.orderItemListDetails[0].chSizeTitle}}</b>
+            <button *ngIf="packageItem.orderItemListDetails[0].pushToRice ==1 && packageItem.orderItemListDetails[0].pushToFryer == 0 && packageItem.orderItemListDetails[0].pushToKitchen ==0" ion-button (click)="removeItem(packageItem)" class="removeButton">Complete</button>
+            <ion-list [class.listDeleted] no-lines [ngClass]="{editedClass: packageItem.edited == 1}">
+              <ion-item [ngClass]="{editedClass: packageItem.edited == 1}"
+                        *ngIf="packageItem.orderItemListDetails[0].sauceID != null"><b>{{!util.isChinese ?
+                packageItem.orderItemListDetails[0].enSauceTitle : packageItem.orderItemListDetails[0].chSauceTitle}}</b>
+              </ion-item>
+              <ion-item [ngClass]="{editedClass: packageItem.edited == 1}"
+                        *ngFor="let addonItem of packageItem.orderItemListDetails[1]"><b>{{!util.isChinese ?
+                addonItem.enActionTitle : addonItem.chActionTitle}} {{!util.isChinese ? addonItem.enIngredientItemTitle :
+                addonItem.chIngredientItemTitle}}</b>
+                <b style="padding-left:10%">{{addonItem.addonCost}}</b>
+              </ion-item>
+            </ion-list>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ion-scroll>
+  </div>
+</ion-content>
+

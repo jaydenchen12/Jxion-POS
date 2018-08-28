@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Order In Process
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngFor="let order of orderHistory" >
+  <ion-card *ngIf="order.isComplete == 0">
+    <ion-card-header class="ionCard">
+      {{order.customerName}} Order ID: {{order.orderID}}
+    </ion-card-header>
+
+    <ion-list>
+      <ng-container *ngFor="let item of kitchen">
+        <ion-item *ngIf="item.customerOrderID == order.orderID ">
+          {{item.orderItemListDetails[0].quantityValue}}x {{item.orderItemListDetails[0].sizeAbre}} {{item.orderItemListDetails[0].enMenuItemTitle}}
+        </ion-item>
+      </ng-container>
+    </ion-list>
+  </ion-card>
+</ng-container>
+</ion-content>

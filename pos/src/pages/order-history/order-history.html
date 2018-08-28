@@ -1,0 +1,80 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Order History</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div>
+    <ngx-datatable
+      class="material"
+      [rows]="rows"
+      [columnMode]="'force'"
+      [columns]="column"
+      [headerHeight]="75"
+      [footerHeight]="50"
+      [rowHeight]="'auto'"
+      [rowClass]="getRowClass">
+      <ngx-datatable-column name="Order ID" [width]="30">
+        <ng-template let-column="column" let-sort="sortFn">
+          <span (click)="sort()">{{column.name}}</span>
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <i>{{row.orderID}}</i>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Customer Name">
+        <ng-template let-column="column" let-sort="sortFn">
+          <span (click)="sort()">{{column.name}}</span>
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <i>{{row.customerName}}</i>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Order Type">
+        <ng-template let-column="column" let-sort="sortFn">
+          <span (click)="sort()">{{column.name}}</span>
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <i>{{row.orderType}}</i>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Order Price">
+        <ng-template let-column="column" let-sort="sortFn">
+          <span (click)="sort()">{{column.name}}</span>
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <i>${{row.orderPrice.toFixed(2)}}</i>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Order Time">
+        <ng-template let-column="column" let-sort="sortFn">
+          <span (click)="sort()">{{column.name}}</span>
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <i>{{row.orderTime.slice(11,19)}}</i>
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column name="Actions" sortable="false" prop="id">
+        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+          {{column.name}}
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <button ion-button (click)="viewItem(row)">
+            <ion-icon name="eye"></ion-icon>
+          </button>
+          <button ion-button (click)="payItem(row)">
+            <ion-icon name="cash"></ion-icon>
+          </button>
+          <button ion-button (click)="removeItem(row)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</ion-content>

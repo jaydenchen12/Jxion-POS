@@ -1,0 +1,66 @@
+page-take-order {
+  ion-content .scroll-content{
+    overflow-y: hidden;
+  }
+  .leftSide {
+    width: 20%;
+    //margin-left: 5%;
+    //margin-right:75%;
+    //margin-top:5%;
+    padding: 3px 10px 10px 10px;
+    background-color: ghostwhite;
+    border-radius: 25px;
+    float: left;
+  }
+  .radioButton{
+    width: 100%;
+    align-content: center;
+        background-color: #696969
+  }
+  .selectClass{
+    background-color: lightskyblue;
+  }
+  .menuItems {
+    width:46%;
+    float: left;
+    margin-left: 1%;
+  }
+  .removeButton{
+    width: 50px;
+    height: 30px;
+    margin-left: 5%;
+    background-color: red;
+  }
+
+  .itemButton {
+    white-space: normal;
+    display:inline-block;
+    min-width: 50px;
+    width: 23.5%;
+    padding:40px 40px 40px 40px;
+    background-color: #0fb2fc
+  }
+  .itemButtonCh {
+    white-space: nowrap;
+  }
+  .deleted ion-item{
+    transition: all .2s ease-out;
+    opacity: 0;
+  }
+  .rightSide {
+    width: 33%;
+    float: left;
+  }
+  .listDeleted {
+    transition: all .2s ease-out;
+    opacity: 0;
+  }
+  .itemCart {
+    margin-bottom: -2%;
+    margin-top: -2%;
+  }
+  .list-md[inset] {
+    margin: 16px 16px 16px -2%;
+    border-radius: 2px;
+  }
+}

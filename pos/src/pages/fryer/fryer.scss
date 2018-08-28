@@ -1,0 +1,19 @@
+page-fryer {
+  .deleted ion-item{
+    transition: all 0.4s ease-out;
+    opacity: 0;
+  }
+  .removeButton{
+    width: 70px;
+    height: 30px;
+    margin-left: 5%;
+    float: right;
+  }
+  .listDeleted {
+    transition: all .4s ease-out;
+    opacity: 0;
+  }
+  .editedClass {
+    background-color: lightcoral;
+  }
+}

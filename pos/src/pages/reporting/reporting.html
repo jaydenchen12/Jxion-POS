@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>
+      Charts in Ionic 2
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<div style="width:90%; height 40vh;">
+    <ion-card>
+      <ion-card-header>
+        Weekly Earning
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #barCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
+<div style="width:90%; height 40vh;">
+    <ion-card>
+      <ion-card-header>
+        Customer Percent
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #doughnutCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+</div>
+<div style="width:90%; height 40vh;">    <ion-card>
+      <ion-card-header>
+        Monthly Sales
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #lineCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+</div>
+<div style="width:90%; height 40vh;">    <ion-card>
+      <ion-card-header>
+        Average Order Time
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #line2Canvas></canvas>
+      </ion-card-content>
+    </ion-card>
+</div>
+</ion-content>
